@@ -6,11 +6,7 @@ const animContainer = document.getElementById("animation-container");
 // ----- SHRINKING NO BUTTON -----
 let clicks = 0;
 const maxClicks = 5;
-let width = 220;      // matches new CSS button width
-let height = 90;      // matches new CSS button height
-let fontSize = 28;    // matches new CSS button font
-const shrinkFactor = 0.8; // still shrink 20% per click
-
+const shrinkFactor = 0.8;
 
 const texts = [
     "Still no?",
@@ -20,27 +16,22 @@ const texts = [
     "I'm sad now... 😭"
 ];
 
-// Initial size
-noBtn.style.width = width + "px";
-noBtn.style.height = height + "px";
-noBtn.style.fontSize = fontSize + "px";
-
 noBtn.addEventListener("click", () => {
     if (clicks >= maxClicks) return;
 
-    // Shrink button and font
-    width *= shrinkFactor;
-    height *= shrinkFactor;
-    fontSize *= shrinkFactor;
+    // Shrink proportionally from current style
+    const currentWidth = noBtn.offsetWidth;
+    const currentHeight = noBtn.offsetHeight;
+    const currentFontSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
 
-    noBtn.style.width = width + "px";
-    noBtn.style.height = height + "px";
-    noBtn.style.fontSize = fontSize + "px";
+    noBtn.style.width = currentWidth * shrinkFactor + "px";
+    noBtn.style.height = currentHeight * shrinkFactor + "px";
+    noBtn.style.fontSize = currentFontSize * shrinkFactor + "px";
 
     noBtn.textContent = texts[clicks];
     clicks++;
 
-    // After 5 clicks, replace with jumping final button
+    // After max clicks, replace with jumping final button
     if (clicks === maxClicks) {
         noBtn.style.display = "none";
         addFinalButton();
@@ -52,9 +43,9 @@ function addFinalButton() {
     const finalBtn = document.createElement("button");
     finalBtn.textContent = "can't sit still anymore ;)";
     finalBtn.className = "btn-red";
-    finalBtn.style.width = "120px";
-    finalBtn.style.height = "50px";
-    finalBtn.style.fontSize = "16px";
+    finalBtn.style.width = "140px";
+    finalBtn.style.height = "60px";
+    finalBtn.style.fontSize = "18px";
     finalBtn.style.position = "absolute";
 
     document.body.appendChild(finalBtn);
@@ -75,7 +66,7 @@ function addFinalButton() {
 // ----- YES BUTTON FIREWORK / HEART / CONFETTI -----
 yesBtn.addEventListener("click", () => {
     output.textContent = "Yay! 💖 You said yes!";
-    noBtn.style.display = "none"; // hide no button immediately
+    noBtn.style.display = "none"; // hide no button
 
     const rect = yesBtn.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
@@ -107,8 +98,6 @@ yesBtn.addEventListener("click", () => {
     heart.className = "heart";
     heart.style.left = x + "px";
     heart.style.top = y + "px";
-    heart.style.width = "270px";
-    heart.style.height = "180px";
     animContainer.appendChild(heart);
 
     // Confetti
@@ -116,7 +105,7 @@ yesBtn.addEventListener("click", () => {
         const confetti = document.createElement("div");
         confetti.className = "firework";
         confetti.style.backgroundColor = `hsl(${Math.random()*360}, 80%, 60%)`;
-        confetti.style.width = confetti.style.height = Math.random() * 10 + 5 + "px";
+        confetti.style.width = confetti.style.height = Math.random() * 12 + 6 + "px";
 
         const dx = (Math.random() - 0.5) * 300 + "px";
         const dy = (Math.random() - 0.5) * 300 + "px";
