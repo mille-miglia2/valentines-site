@@ -6,10 +6,11 @@ const animContainer = document.getElementById("animation-container");
 // ----- SHRINKING NO BUTTON -----
 let clicks = 0;
 const maxClicks = 5;
-let width = 150;
-let height = 60;
-let fontSize = 20;
-const shrinkFactor = 0.8;
+let width = 220;      // matches new CSS button width
+let height = 90;      // matches new CSS button height
+let fontSize = 28;    // matches new CSS button font
+const shrinkFactor = 0.8; // still shrink 20% per click
+
 
 const texts = [
     "Still no?",
