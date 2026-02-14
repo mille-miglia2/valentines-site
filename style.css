@@ -1,38 +1,53 @@
-body {
+/* Full-screen layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    margin: 20px;
     background: rgba(241, 68, 154, 0.44);
     color: #eee;
     text-align: center;
-}
-
-p {
-    font-size: 22px;
-}
-
-h1 {
-    margin-top: 20px;
-    font-size: 36px;
-}
-
-/* container for buttons stacked vertically */
-.button-container {
     display: flex;
-    flex-direction: column; /* vertical stack */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Content wrapper to center vertically */
+.content {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-top: 30px;
 }
 
-/* common button style */
+/* Text */
+p {
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+/* Buttons stacked vertically */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Common button style */
 button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 28px; /* very large */
-    width: 220px;
-    height: 90px;
+    font-size: 32px; /* large text */
+    width: 250px;
+    height: 100px;
     color: white;
     border: none;
     border-radius: 10px;
@@ -41,7 +56,7 @@ button {
     position: relative;
 }
 
-/* green button */
+/* Green button */
 .btn-green {
     background-color: green;
     font-weight: bold;
@@ -50,7 +65,7 @@ button {
     background-color: #27ae60;
 }
 
-/* red button */
+/* Red button */
 .btn-red {
     background-color: #ec0b3f;
 }
@@ -102,19 +117,19 @@ button {
     100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); opacity: 1; }
 }
 
-/* Mobile-specific tweaks */
+/* Responsive tweaks for small screens */
 @media (max-width: 480px) {
     button {
-        width: 250px;
-        height: 100px;
-        font-size: 32px;
+        width: 280px;
+        height: 110px;
+        font-size: 36px;
     }
 
     h1 {
-        font-size: 40px;
+        font-size: 44px;
     }
 
     p {
-        font-size: 24px;
+        font-size: 26px;
     }
 }
