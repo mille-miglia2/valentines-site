@@ -31,7 +31,6 @@ noBtn.addEventListener("click", () => {
     noBtn.textContent = texts[clicks];
     clicks++;
 
-    // After max clicks, replace with jumping final button
     if (clicks === maxClicks) {
         noBtn.style.display = "none";
         addFinalButton();
@@ -65,12 +64,12 @@ function addFinalButton() {
 
 // ----- YES BUTTON FIREWORK / HEART / CONFETTI -----
 yesBtn.addEventListener("click", () => {
-    output.textContent = "Yay! 💖 You said yes!";
+    output.innerHTML = "Yay! 💖<br>";  // New line for text
     noBtn.style.display = "none"; // hide no button
 
     const rect = yesBtn.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
+    const y = rect.top + rect.height / 2 + 50; // offset figure below text
 
     // Sparks
     for (let i = 0; i < 30; i++) {
@@ -92,7 +91,7 @@ yesBtn.addEventListener("click", () => {
         particle.addEventListener("animationend", () => particle.remove());
     }
 
-    // Heart image
+    // Heart image below text
     const heart = document.createElement("img");
     heart.src = "images/GettyImages-2191580383.jpg.webp";
     heart.className = "heart";
