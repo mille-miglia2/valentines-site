@@ -102,12 +102,12 @@ yesBtn.addEventListener("click", () => {
 
     // Heart image
     const heart = document.createElement("img");
-    heart.src = "images/GettyImages-2191580383.jpg.webp"; // example heart
+    heart.src = "images/GettyImages-2191580383.jpg.webp";
     heart.className = "heart";
     heart.style.left = x + "px";
     heart.style.top = y + "px";
-    heart.style.width = "270px";   // make it bigger
-    heart.style.height = "180px";  // make it bigger
+    heart.style.width = "270px";
+    heart.style.height = "180px";
     animContainer.appendChild(heart);
 
     // Confetti
